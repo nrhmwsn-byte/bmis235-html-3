@@ -43,7 +43,11 @@ h1 {
     text-align: center;
     font-size: 40px;
 }
-
+h2 {
+    color: #f14c8f;
+    text-align: center;
+    font-size: 28px;
+}
 p {
     max-width: 600px;
     margin: 20px auto;
