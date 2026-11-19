@@ -19,6 +19,7 @@ body {
 
 /* the menu at the top of every page */
 nav {
+    border-radius: 25px;
     background-color: #fb97ae;
     padding: 20px;
     text-align: center;
