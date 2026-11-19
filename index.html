@@ -52,7 +52,144 @@
      This box is empty on purpose. In Part 7 you paste an interactive
      graphic BETWEEN the opening <div> and the closing </div> below.
      ===================================================================== -->
-<div class="showcase"></div>
+<div class="showcase">html
+<!-- HTML: three cards. Each has a front (the meal) and a back (the dish). -->
+<div class="cards">
+  <button type="button" class="card" aria-pressed="false" aria-label="Breakfast card, click to flip">
+    <span class="card-inner">
+      <span class="card-face card-front">
+        <span class="card-emoji">🍳</span>
+        <span class="card-text">Breakfast</span>
+      </span>
+      <span class="card-face card-back">
+        <span class="card-text">Shakshuka</span>
+      </span>
+    </span>
+  </button>
+
+  <button type="button" class="card" aria-pressed="false" aria-label="Lunch card, click to flip">
+    <span class="card-inner">
+      <span class="card-face card-front">
+        <span class="card-emoji">🥪</span>
+        <span class="card-text">Lunch</span>
+      </span>
+      <span class="card-face card-back">
+        <span class="card-text">Caprese Sandwich</span>
+      </span>
+    </span>
+  </button>
+
+  <button type="button" class="card" aria-pressed="false" aria-label="Dinner card, click to flip">
+    <span class="card-inner">
+      <span class="card-face card-front">
+        <span class="card-emoji">🍲</span>
+        <span class="card-text">Dinner</span>
+      </span>
+      <span class="card-face card-back">
+        <span class="card-text">Chicken and Dumplings</span>
+      </span>
+    </span>
+  </button>
+</div>
+
+<!-- CSS: styles the cards and the flip animation. Every rule starts with .showcase. -->
+<style>
+  .showcase .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .showcase .card {
+    perspective: 800px;
+    height: 220px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: "HGMaruGothicMPRO", "HG丸ゴシックM-PRO", sans-serif;
+  }
+
+  .showcase .card-inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+  }
+
+  .showcase .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .showcase .card-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 18px;
+    border: 3px solid #f14c8f;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    text-align: center;
+  }
+
+  .showcase .card-front {
+    background-color: #f14c8f;
+    color: #ffe9a1;
+  }
+
+  .showcase .card-back {
+    background-color: #ffe9a1;
+    color: #f14c8f;
+    transform: rotateY(180deg);
+  }
+
+  .showcase .card-emoji {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+
+  .showcase .card-text {
+    font-size: clamp(0.85rem, 3.6vw, 1.3rem);
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .showcase .card:hover .card-face,
+  .showcase .card:focus-visible .card-face {
+    box-shadow: 0 0 15px 4px rgba(241, 76, 143, 0.6);
+  }
+
+  .showcase .card:focus-visible {
+    outline: none;
+  }
+</style>
+
+<!-- JavaScript: flips a card when clicked (or when Enter/Space is pressed on it). -->
+<script>
+  (function () {
+    var cards = document.querySelectorAll(".showcase .card");
+    cards.forEach(function (card) {
+      card.addEventListener("click", function () {
+        var isFlipped = card.classList.toggle("flipped");
+        card.setAttribute("aria-pressed", isFlipped ? "true" : "false");
+      });
+    });
+  })();
+</script></div>
 
 <!-- Footer: fill in your name -->
 <footer>Built by Norah Meeuwsen &middot; BMIS 235</footer>
