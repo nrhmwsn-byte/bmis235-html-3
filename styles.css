@@ -62,3 +62,12 @@ footer {
     color: #fb97ae;
     margin-top: 40px;
 }
+
+hr {
+  border: none;
+  height: 3px;
+  background-color: #f14c8f;
+  width: 60%;
+  margin: 30px auto;
+  border-radius: 2px;
+}
